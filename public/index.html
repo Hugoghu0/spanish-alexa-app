@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homie · Skill de Alexa</title>
+  <style>
+    :root { --bg1:#3A2E7A; --bg2:#1B1F4B; --teal:#2EC4B6; --ink:#16213E; --soft:#C9C3FF; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, sans-serif; color:#fff;
+      background: linear-gradient(160deg, var(--bg1), var(--bg2)) fixed; line-height:1.55; }
+    main { max-width: 900px; margin: 0 auto; padding: 48px 22px 80px; }
+    .hero { display:flex; gap:32px; align-items:center; flex-wrap:wrap; justify-content:center; }
+    .hero svg { width: 220px; animation: bob 1.4s ease-in-out infinite alternate; }
+    @keyframes bob { to { transform: translateY(-14px); } }
+    .bubble { background:#fff; color:var(--ink); border-radius:36px; padding:22px 34px; font-size: clamp(32px,6vw,56px); font-weight:800; }
+    h1 { font-size: 20px; letter-spacing:.08em; text-transform:uppercase; color:var(--soft); margin:0 0 10px; }
+    h2 { margin-top: 48px; }
+    ol li { margin: 12px 0; }
+    code, .pill { background: rgba(255,255,255,.12); padding: 2px 8px; border-radius: 8px; font-family: ui-monospace, monospace; font-size: .92em; }
+    .card { background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 20px 24px; }
+    button, a.btn { background: var(--teal); color: var(--ink); border:0; border-radius: 999px; padding: 10px 20px; font-weight:700; cursor:pointer; text-decoration:none; font-size: 15px; display:inline-block; }
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .muted { color: var(--soft); }
+  </style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <svg viewBox="0 0 200 220" role="img" aria-label="Homie, el bot">
+      <rect x="97" y="24" width="6" height="24" fill="#9AA5C4"/>
+      <circle cx="100" cy="18" r="10" fill="#FF6B5B"/><circle cx="97" cy="15" r="3" fill="#FFD1CB"/>
+      <path d="M30,80 Q20,80 20,90 L20,104 Q20,114 30,114 L36,114 L36,80 Z" fill="#FFB627"/>
+      <path d="M170,80 Q180,80 180,90 L180,104 Q180,114 170,114 L164,114 L164,80 Z" fill="#FFB627"/>
+      <rect x="34" y="46" width="132" height="102" rx="32" fill="#2EC4B6"/>
+      <rect x="50" y="60" width="100" height="74" rx="22" fill="#16213E"/>
+      <circle cx="78" cy="90" r="11" fill="#7CF7E8"/><circle cx="122" cy="90" r="11" fill="#7CF7E8"/>
+      <circle cx="81" cy="86" r="3.5" fill="#fff"/><circle cx="125" cy="86" r="3.5" fill="#fff"/>
+      <circle cx="62" cy="114" r="6" fill="#FF8FA3" opacity=".8"/><circle cx="138" cy="114" r="6" fill="#FF8FA3" opacity=".8"/>
+      <path d="M84,110 Q100,124 116,110" fill="none" stroke="#7CF7E8" stroke-width="5" stroke-linecap="round"/>
+      <rect x="88" y="148" width="24" height="10" fill="#9AA5C4"/>
+      <path d="M76,156 L124,156 Q146,156 146,178 L146,206 Q146,214 138,214 L62,214 Q54,214 54,206 L54,178 Q54,156 76,156 Z" fill="#22A699"/>
+      <circle cx="100" cy="184" r="11" fill="#FFD166"/><circle cx="100" cy="184" r="5" fill="#FFF3C4"/>
+    </svg>
+    <div>
+      <h1>Homie · Skill de Alexa</h1>
+      <div class="bubble">¿Qué quieres?</div>
+      <p class="muted">Así se ve Homie en los Echo con pantalla.</p>
+    </div>
+  </div>
+
+  <h2>Cómo activarla en tu Alexa</h2>
+  <div class="card">
+    <ol>
+      <li>Entra en <a class="pill" href="https://developer.amazon.com/alexa/console/ask" target="_blank" rel="noopener">developer.amazon.com/alexa/console/ask</a> con <b>la misma cuenta de Amazon</b> que usa tu Echo.</li>
+      <li>Pulsa <b>Create Skill</b>. Nombre: <code>Homie</code>. Idioma: <b>Español</b> (España, México o EE. UU., el que tenga tu Echo). Tipo: <b>Other → Custom</b>. Hosting: <b>Provision your own</b>. Plantilla: <b>Start from Scratch</b>.</li>
+      <li>En <b>Build → Interaction Model → JSON Editor</b>, pega el modelo de abajo y pulsa <b>Save</b> y luego <b>Build skill</b>.</li>
+      <li>En <b>Build → Interfaces</b>, activa <b>Alexa Presentation Language</b> (marca todos los tipos de pantalla) y guarda.</li>
+      <li>En <b>Build → Endpoint</b>, elige <b>HTTPS</b> y pega:<br><code id="endpoint">https://spanish-alexa-app.netlify.app/api/alexa</code><br>
+        En el certificado elige: <i>"My development endpoint is a sub-domain of a domain that has a wildcard certificate from a certificate authority"</i>. Guarda.</li>
+      <li>En la pestaña <b>Test</b>, cambia a <b>Development</b>. ¡Listo! Ya puedes decirle a tu Echo: <b>"Alexa, abre homie"</b> (se dice <i>"jomi"</i>).</li>
+    </ol>
+  </div>
+
+  <h2>Modelo de interacción</h2>
+  <div class="row">
+    <button id="copy">Copiar JSON</button>
+    <a class="btn" href="/alexa/modelo-interaccion.json" download>Descargar</a>
+    <span id="msg" class="muted"></span>
+  </div>
+
+  <h2>Qué puedes decirle</h2>
+  <div class="card">
+    <p>"Alexa, abre homie" → Homie aparece en pantalla y pregunta <b>"¿Qué quieres?"</b></p>
+    <p>Luego contesta con frases como: <i>"quiero saber cuántos planetas hay"</i>, <i>"cuéntame un chiste"</i>, <i>"dime una receta fácil"</i>, <i>"qué es un agujero negro"</i>. Homie responde en español y te pregunta si quieres algo más. Di <i>"para"</i> o <i>"adiós"</i> para salir.</p>
+  </div>
+</main>
+<script>
+  document.getElementById('copy').onclick = async () => {
+    const json = await (await fetch('/alexa/modelo-interaccion.json')).text()
+    await navigator.clipboard.writeText(json)
+    document.getElementById('msg').textContent = '¡Copiado!'
+  }
+</script>
+</body>
+</html>

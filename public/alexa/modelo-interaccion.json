@@ -1,0 +1,73 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "homie",
+      "intents": [
+        {
+          "name": "PreguntaIntent",
+          "slots": [
+            {
+              "name": "consulta",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "quiero {consulta}",
+            "quiero saber {consulta}",
+            "quisiera {consulta}",
+            "me gustaría {consulta}",
+            "dime {consulta}",
+            "cuéntame {consulta}",
+            "háblame de {consulta}",
+            "explícame {consulta}",
+            "qué es {consulta}",
+            "qué son {consulta}",
+            "qué {consulta}",
+            "quién es {consulta}",
+            "quién {consulta}",
+            "cómo {consulta}",
+            "por qué {consulta}",
+            "cuándo {consulta}",
+            "dónde {consulta}",
+            "cuánto {consulta}",
+            "cuántos {consulta}",
+            "cuál es {consulta}",
+            "cuál {consulta}",
+            "necesito {consulta}",
+            "ayúdame con {consulta}",
+            "ayúdame a {consulta}",
+            "busca {consulta}",
+            "recomiéndame {consulta}",
+            "tengo una pregunta {consulta}",
+            "pregunta {consulta}",
+            "puedes {consulta}",
+            "sabes {consulta}",
+            "dame {consulta}",
+            "hazme {consulta}"
+          ]
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  }
+}
